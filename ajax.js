@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-  /* Your code goes here */
+  $.ajax({
+    url: 'http://first-ajax-api.herokuapp.com/count',
+    method: 'GET',
+    data: {},
+    dataType: 'text'
+  })
 
 });
