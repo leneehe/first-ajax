@@ -13,3 +13,6 @@
 5. (Firefox & Chrome) Method: Get, Status: 200 ok
 6. (Firefox) Cause: JS xhr, Type: text/plain
   (Chrome) Type: xhr, Initiator: script jquery.min.js
+
+# Step 3
+4. Response: Wow what a ride! I came all the way from the server!
