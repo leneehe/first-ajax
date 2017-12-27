@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
       section = document.querySelector('#step3456'),
       pingPongbtn = section.querySelector('button'),
       countbtn = document.querySelector('#step7 button'),
-      timebtn = document.querySelector('#step8 button');
+      timebtn = document.querySelector('#step8 button'),
+      carbtn = document.querySelector('#step9 button');
 
   requestbtn.addEventListener('click', function() {
     $.ajax({
@@ -63,6 +64,19 @@ document.addEventListener("DOMContentLoaded", function() {
       section = document.querySelector('#step8');
       section.appendChild(document.createElement('br'));
       section.appendChild(spanText);
+    })
+  })
+
+  carbtn.addEventListener('click', function() {
+    $.ajax({
+      url: 'http://first-ajax-api.herokuapp.com/a_car',
+      method: 'GET',
+      dataType: 'html',
+    }).done(function (responseData) {
+      var liCar = document.createElement('span');
+      liCar.innerHTML = responseData;
+      section = document.querySelector('#yourCar');
+      section.appendChild(liCar)
     })
   })
 
