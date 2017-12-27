@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   var requestbtn = document.querySelector('#step12 button'),
-      pingPongbtn = document.querySelector('#step3456 button');
+      section = document.querySelector('#step3456'),
+      pingPongbtn = section.querySelector('button');
 
   requestbtn.addEventListener('click', function() {
     $.ajax({
@@ -14,14 +15,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
   pingPongbtn.addEventListener('click', function() {
     $.ajax({
-      url: 'http://first-ajax-api.herokuapp.com/ping',
+      url: 'http://first-ajax-api.herokuapp.com/pong',
       method: 'GET',
       dataType: 'text',
     }).done(function (responseData) {
       console.log(responseData);
-      var section = document.querySelector('#step3456'),
-          spanText = document.createElement('span');
+      var spanText = document.createElement('span');
       spanText.innerText = responseData;
+      section.appendChild(spanText);
+    }).fail(function (response) {
+      console.log(response.responseText);
+      var spanText = document.createElement('span');
+      spanText.appendChild(document.createTextNode(response.responseText));
       section.appendChild(spanText);
     })
   })
