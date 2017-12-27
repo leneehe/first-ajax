@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
   var requestbtn = document.querySelector('#step12 button'),
       section = document.querySelector('#step3456'),
       pingPongbtn = section.querySelector('button'),
-      countbtn = document.querySelector('#step7 button');
+      countbtn = document.querySelector('#step7 button'),
+      timebtn = document.querySelector('#step8 button');
 
   requestbtn.addEventListener('click', function() {
     $.ajax({
@@ -46,6 +47,22 @@ document.addEventListener("DOMContentLoaded", function() {
       section = document.querySelector('#step7');
       section.appendChild(document.createElement('br'));
       section.appendChild(spanCount);
+    })
+  })
+
+  timebtn.addEventListener('click', function() {
+    $.ajax({
+      url: 'http://first-ajax-api.herokuapp.com/time',
+      method: 'GET',
+      data: {'timezone': 'Asia/Kolkata'},
+      dataType: 'text',
+    }).done(function (responseData) {
+      console.log(responseData)
+      var spanText = document.createElement('span');
+      spanText.appendChild(document.createTextNode(responseData));
+      section = document.querySelector('#step8');
+      section.appendChild(document.createElement('br'));
+      section.appendChild(spanText);
     })
   })
 
