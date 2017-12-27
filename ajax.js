@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var spanText = document.createElement('span');
       spanText.appendChild(document.createTextNode(response.responseText));
       section.appendChild(spanText);
+    }).always(function () {
+      console.log('Hey the request is complete!');
     })
   })
 
