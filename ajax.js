@@ -25,11 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(responseData);
       var spanText = document.createElement('span');
       spanText.innerText = responseData;
+      section = document.querySelector('#step3456');
       section.appendChild(spanText);
     }).fail(function (response) {
       console.log(response.responseText);
       var spanText = document.createElement('span');
       spanText.appendChild(document.createTextNode(response.responseText));
+      section = document.querySelector('#step3456');
       section.appendChild(spanText);
     }).always(function () {
       console.log('Hey the request is complete!');
