@@ -94,6 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
         section.appendChild(document.createElement('br'));
         section.appendChild(spanText);
       })
+    } else {
+      alert('Enter a time zone!');
     }
   })
 
