@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
       pingPongbtn = section.querySelector('button'),
       countbtn = document.querySelector('#step7 button'),
       timebtn = document.querySelector('#step8 button'),
+      time2btn = document.querySelector('[name="time2"]'),
+      inputTimeZone = document.querySelector('[name="timezone"]'),
       carbtn = document.querySelector('#step9 button');
 
   requestbtn.addEventListener('click', function() {
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     $.ajax({
       url: 'http://first-ajax-api.herokuapp.com/count',
       method: 'GET',
+      data: {'amount': 4},
       dataType: 'text',
     }).done(function (responseData) {
       console.log(responseData);
@@ -67,6 +70,31 @@ document.addEventListener("DOMContentLoaded", function() {
       section.appendChild(document.createElement('br'));
       section.appendChild(spanText);
     })
+  })
+
+  time2btn.addEventListener('click', function() {
+    if (inputTimeZone.value) {
+      $.ajax({
+        url: 'http://first-ajax-api.herokuapp.com/time',
+        method: 'GET',
+        data: {'timezone': inputTimeZone.value},
+        dataType: 'text',
+      }).done(function (responseData) {
+        console.log(responseData)
+        var spanText = document.createElement('span');
+        spanText.appendChild(document.createTextNode(responseData));
+        section = document.querySelector('#step8');
+        section.appendChild(document.createElement('br'));
+        section.appendChild(spanText);
+      }).fail(function (response) {
+        console.log(response.statusText);
+        var spanText = document.createElement('span');
+        spanText.innerText = 'Incorrect Time Zone input';
+        section = document.querySelector('#step8');
+        section.appendChild(document.createElement('br'));
+        section.appendChild(spanText);
+      })
+    }
   })
 
   carbtn.addEventListener('click', function() {
